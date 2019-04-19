@@ -1,13 +1,19 @@
 before_script:
   - apt update -y -qq && apt install -y -qq tesseract-ocr libtesseract-dev libleptonica-dev pkg-config
   - export DEBIAN_FRONTEND=noninteractive && apt update -y -qq && apt install -y -qq python3-pip python3-django translate-toolkit python3-whoosh python3-pil git mercurial python3-django-compressor python3-django-crispy-forms python3-djangorestframework python3-dateutil python3-celery cython default-libmysqlclient-dev python3-psycopg2 python3-pymysql python3-mysqldb python3-requests-oauthlib python3-six python3-openid
-  - echo "America/New_York" | tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
+  - echo "Asia/Shanghai" | tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
   - pip3 install setuptools wheel social-auth-core social-auth-app-django django-crispy-forms whoosh django_compressor tesserocr psycopg2-binary mysqlclient pyuca
-build:
+
+stages:
+  - build
+job:
+  stage: build
+  before_script:
+    - echo $(date +"%Y%m%d%H%M") 
   script:
-    - python3 setup.py bdist_wheel
+    - python3 setup.py build
+  after_script:
+    - echo $(date +"%Y%m%d%H%M")
   artifacts:
     paths:
       - build
-      - dist 
-      - ./*.egg-info
