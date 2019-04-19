@@ -5,7 +5,9 @@ before_script:
   - pip3 install setuptools wheel social-auth-core social-auth-app-django django-crispy-forms whoosh django_compressor tesserocr psycopg2-binary mysqlclient pyuca
 build:
   script:
-    - python3 setup.py build    
+    - python3 setup.py bdist_wheel
   artifacts:
     paths:
       - build
+      - dist 
+      - ./*.egg-info
