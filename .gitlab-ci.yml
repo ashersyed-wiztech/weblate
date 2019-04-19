@@ -1,6 +1,6 @@
 before_script:
-  - sudo apt update -y -qq && sudo apt install -y -qq python3-pip python3-django translate-toolkit python3-whoosh python3-pil git mercurial python3-django-compressor python3-django-crispy-forms python3-djangorestframework python3-dateutil python3-celery tesseract-ocr libtesseract-dev libleptonica-dev cython default-libmysqlclient-dev python3-psycopg2 python3-pymysql python3-mysqldb python3-requests-oauthlib python3-six python3-openid
-  - apt-get install tesseract-ocr libtesseract-dev libleptonica-dev pkg-config
+  - apt update -y -qq && apt install -y -qq tesseract-ocr libtesseract-dev libleptonica-dev pkg-config
+  - apt update -y -qq && apt install -y -qq python3-pip python3-django translate-toolkit python3-whoosh python3-pil git mercurial python3-django-compressor python3-django-crispy-forms python3-djangorestframework python3-dateutil python3-celery cython default-libmysqlclient-dev python3-psycopg2 python3-pymysql python3-mysqldb python3-requests-oauthlib python3-six python3-openid
   - pip3 install setuptools wheel social-auth-core social-auth-app-django django-crispy-forms whoosh django_compressor tesserocr psycopg2-binary mysqlclient pyuca
 build:
   script:
