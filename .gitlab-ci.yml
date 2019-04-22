@@ -10,9 +10,10 @@ job:
     - echo "Asia/Shanghai" | tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata
     - pip3 install setuptools wheel social-auth-core social-auth-app-django django-crispy-forms whoosh django_compressor tesserocr psycopg2-binary mysqlclient pyuca
   script:
-    - python3 setup.py build
+    - python3 setup.py bdist_wheel
   after_script:
     - echo $(date +"%Y%m%d%H%M")
   artifacts:
     paths:
       - build
+      - dist
