@@ -20,5 +20,10 @@ job:
       - dist
 trigger_build:
   stage: deploy
+  before_script:
+    - echo $(date +"%Y%m%d%H%M") 
+    - apt-get update -qq && apt-get install -y -qq curl
   script:
     - curl -X POST -F token=f45e690fdb1491d185e53e4b83cd70 -F "ref=master" http://47.102.156.191/api/v4/projects/6/trigger/pipeline
+  after_script:
+    - echo $(date +"%Y%m%d%H%M")
